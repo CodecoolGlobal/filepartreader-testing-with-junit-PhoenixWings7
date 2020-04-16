@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="24.5" y="0.0">FilePartReader</node>
+    <node x="10.833333333333343" y="233.16666666666669">FileWordAnalyzer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="FileWordAnalyzer" target="FilePartReader">
+      <point x="0.0" y="-67.0" />
+      <point x="0.0" y="54.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.2000000000000002" x="116.0" y="192.99999999999994" />
+  <SelectedNodes>
+    <node>FileWordAnalyzer</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
