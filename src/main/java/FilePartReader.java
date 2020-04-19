@@ -1,14 +1,50 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class FilePartReader {
-    public void setup(String flePath, Integer fromLine, Integer toLine) throws IllegalArgumentException {
+    File file;
+    FileReader fileReader;
+    String fileContent = "";
+    Integer fromLine = 1;
+    Integer toLine = 1;
+    String[] lines;
+
+    public void setup(String filePath, Integer fromLine, Integer toLine) throws FileNotFoundException, IllegalArgumentException {
+        if ((toLine < fromLine) || (fromLine < 1)) {
+            throw new IllegalArgumentException();
+        }
+
+        this.file = new File(filePath);
+        this.fileReader = new FileReader(file);
+        this.fromLine = fromLine;
+        this.toLine = toLine;
     }
 
     public String read() throws IOException {
-        return null;
+        if (file != null) {
+            this.fileContent = Files.readString(file.toPath());
+        }
+        return fileContent;
     }
 
     public String readLines() {
-        return null;
+        if (lines == null) {
+            lines = fileContent.split("\n");
+        }
+        StringBuilder linesSB = new StringBuilder();
+        int lineNum = 1;
+        while (lineNum <= toLine && toLine <= lines.length) {
+            linesSB.append(lines[lineNum-1]);
+            lineNum++;
+        }
+
+        return linesSB.toString();
+    }
+
+    public void setToLine(Integer toLine) {
+        this.toLine = toLine;
     }
 }
