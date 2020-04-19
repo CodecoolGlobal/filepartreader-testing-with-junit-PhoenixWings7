@@ -1,7 +1,7 @@
-import java.util.*;
-import java.util.Collections.*;
+import java.util.Comparator;
+import java.util.List;
 
-import static java.util.Arrays.*;
+import static java.util.Arrays.asList;
 
 public class FileWordAnalyzer {
     private FilePartReader filePartReader;
