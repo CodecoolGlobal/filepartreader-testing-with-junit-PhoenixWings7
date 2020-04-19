@@ -44,6 +44,10 @@ public class FilePartReader {
         return linesSB.toString();
     }
 
+    public void setFromLine(Integer fromLine) {
+        this.fromLine = fromLine;
+    }
+
     public void setToLine(Integer toLine) {
         this.toLine = toLine;
     }
