@@ -64,4 +64,14 @@ class FilePartReaderTest {
 
         assertEquals(expextedText, actualText);
     }
+
+    @Test
+    void should_throwException_when_fromLineLessThan1() {
+        assertThrows(IllegalArgumentException.class, () -> filePartReader.setup("", -1, 9));
+    }
+
+    @Test
+    void should_throwException_when_toLineLessThanFromLine() {
+        assertThrows(IllegalArgumentException.class, () -> filePartReader.setup("", 6, 2));
+    }
 }
