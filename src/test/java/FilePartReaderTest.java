@@ -23,6 +23,7 @@ class FilePartReaderTest {
 
     @Test
     @Order(1)
+    // read the file first, then execute tests
     void should_readWholeFile_when_readingFile() throws IOException {
         String expectedContent = "A child asked his father, \"How were people born?\" So his father said, \"Adam and Eve made babies, then their babies became adults and made babies, and so on.\"\n" +
                 "The child then went to his mother, asked her the same question and she told him, \"We were monkeys then we evolved to become like we are now.\"\n" +
@@ -40,7 +41,6 @@ class FilePartReaderTest {
     }
 
     @Test
-    @Order(2)
     void should_readFirstLine_when_readingLines() {
         filePartReader.setToLine(1);
         String firstLine = "A child asked his father, \"How were people born?\" So his father said, \"Adam and Eve made babies, then their babies became adults and made babies, and so on.\"";
