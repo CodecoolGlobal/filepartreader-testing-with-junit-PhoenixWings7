@@ -35,9 +35,12 @@ public class FilePartReader {
             lines = fileContent.split("\n");
         }
         StringBuilder linesSB = new StringBuilder();
-        int lineNum = 1;
+        int lineNum = fromLine;
         while (lineNum <= toLine && toLine <= lines.length) {
             linesSB.append(lines[lineNum-1]);
+            if (lineNum != toLine) {
+                linesSB.append("\n");
+            }
             lineNum++;
         }
 
