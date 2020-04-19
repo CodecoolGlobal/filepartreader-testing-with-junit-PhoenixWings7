@@ -21,7 +21,12 @@ public class FileWordAnalyzer {
     }
 
     public List<String> getWordsContainingSubstring(String subString) {
-        return null;
+        this.updateWords();
+        List<String> filtered = words.stream().distinct()
+                .filter((word) -> word.toLowerCase().contains(subString.toLowerCase()))
+                .collect(Collectors.toList());
+
+        return filtered;
     }
 
     public List<String> getStringsWhichPalindromes() {
