@@ -10,15 +10,22 @@ public class FileWordAnalyzer {
         this.filePartReader = filePartReader;
     }
 
-    public List getWordsOrderedAlphabetically() {
+    public List<String> getWordsOrderedAlphabetically() {
+        String fileContent = filePartReader.readLines();
+
+        List<String> words = asList(fileContent.split("\\s+"));
+        words.sort(alphaComperator);
+
+        return words;
+    }
+
+    public List<String> getWordsContainingSubstring(String subString) {
         return null;
     }
 
-    public List getWordsContainingSubstring(String subString) {
+    public List<String> getStringsWhichPalindromes() {
         return null;
     }
 
-    public List getStringsWhichPalindromes() {
-        return null;
-    }
+    private Comparator<String> alphaComperator = String::compareToIgnoreCase;
 }
