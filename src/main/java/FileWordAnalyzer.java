@@ -1,8 +1,8 @@
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.Arrays.asList;
 
 public class FileWordAnalyzer {
     private FilePartReader filePartReader;
@@ -30,13 +30,30 @@ public class FileWordAnalyzer {
     }
 
     public List<String> getStringsWhichPalindromes() {
-        return null;
+        this.updateWords();
+        List<String> filtered = words.stream().distinct()
+                .filter(word -> word.length()>2)
+                .filter((word) -> {
+                    String thisWord = word.toLowerCase();
+                    for (int i = 0; i < thisWord.length()/2; i++) {
+                        if (thisWord.charAt(i) != thisWord.charAt(thisWord.length()-i-1)) {
+                            return false;
+                        }
+                    }
+                    return true;
+                })
+                .collect(Collectors.toList());
+        return filtered;
     }
 
     private void updateWords() {
         String fileContent = filePartReader.readLines();
-        words = asList(fileContent.split("\\s+"));
+        // TODO: get words without punctuation signs
+        words = Arrays.stream(fileContent.split("\\s+"))
+                .map(PunctuationReplacer::deletePunctuation)
+                .collect(Collectors.toList());
+
     }
 
-    private Comparator<String> alphaComperator = String::compareToIgnoreCase;
+    private final Comparator<String> alphaComperator = String::compareToIgnoreCase;
 }
