@@ -27,7 +27,7 @@ class FileWordAnalyzerTest {
         filePartReader.setToLine(2);
 
         List<String> expectedResult = Arrays.asList("a", "article", "decided", "for", "go", "Having",
-                "I've", "reading", "the", "to", "trouble", "walk") ;
+                "Ive", "reading", "the", "to", "trouble", "walk") ;
         List<String> actualResult = wordAnalyzer.getWordsOrderedAlphabetically();
 
         assertEquals(expectedResult, actualResult);
@@ -38,7 +38,7 @@ class FileWordAnalyzerTest {
         filePartReader.setFromLine(1);
         filePartReader.setToLine(7);
 
-        List<String> expectedResult = Arrays.asList("walk", "Walking", "walkie-talkie");
+        List<String> expectedResult = Arrays.asList("walk", "Walking", "walkietalkie");
         List<String> actualResult = wordAnalyzer.getWordsContainingSubstring("walk");
 
         assertEquals(expectedResult, actualResult);
