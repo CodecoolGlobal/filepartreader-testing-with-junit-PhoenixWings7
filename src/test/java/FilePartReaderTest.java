@@ -11,12 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class FilePartReaderTest {
+    static final String SEPARATOR = System.lineSeparator();
     static FilePartReader filePartReader;
 
     @BeforeAll
     static void should_createNewTestEnv_beforeAllTests() throws FileNotFoundException {
         filePartReader = new FilePartReader();
-        filePartReader.setup("/home/klaudia/IdeaProjects/filepartreader-testing-with-junit-PhoenixWings7/src/test/resources/testFile.txt",
+        String currentDir = System.getProperty("user.dir");
+        filePartReader.setup(currentDir + "/src/test/resources/testFile.txt",
                 1, 5);
         assertNotNull(filePartReader.file, "File is null!");
     }
@@ -26,10 +28,10 @@ class FilePartReaderTest {
     // read the file first, then execute tests
     void should_readWholeFile_when_readingFile() throws IOException {
         String expectedContent = "A child asked his father, \"How were people born?\" So his father said, " +
-                "\"Adam and Eve made babies, then their babies became adults and made babies, and so on.\"\n" +
+                "\"Adam and Eve made babies, then their babies became adults and made babies, and so on.\"" + SEPARATOR +
                 "The child then went to his mother, asked her the same question and she told him, " +
-                "\"We were monkeys then we evolved to become like we are now.\"\n" +
-                "The child ran back to his father and said, \"You lied to me!\"\n" +
+                "\"We were monkeys then we evolved to become like we are now.\"" + SEPARATOR +
+                "The child ran back to his father and said, \"You lied to me!\"" + SEPARATOR +
                 "His father replied, \"No, your mom was talking about her side of the family.\"";
         String actualContent = filePartReader.read();
 
@@ -58,7 +60,7 @@ class FilePartReaderTest {
         filePartReader.setToLine(3);
 
         String expextedText = "The child then went to his mother, asked her the same question and she told him, \"" +
-                "We were monkeys then we evolved to become like we are now.\"\n" +
+                "We were monkeys then we evolved to become like we are now.\"" + SEPARATOR +
                 "The child ran back to his father and said, \"You lied to me!\"";
         String actualText = filePartReader.readLines();
 

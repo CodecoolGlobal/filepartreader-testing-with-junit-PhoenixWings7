@@ -44,7 +44,7 @@ public class FilePartReader {
             lineNum++;
         }
 
-        return linesSB.toString();
+        return linesSB.toString().trim();
     }
 
     public void setFromLine(Integer fromLine) {
