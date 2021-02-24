@@ -39,9 +39,12 @@ class FilePartReaderTest {
     }
 
     @Test
-    void should_throwIOException_when_() {
-        // TODO: figure out how to make read() throw exception
-        assertThrows(IOException.class, () -> filePartReader.read());
+    void should_throwIOException_when_IOExceptionOccurs() {
+        FilePartReader fileNotFound = new FilePartReader();
+        try {
+            fileNotFound.setup("./test.txt", 1, 1);
+        } catch (FileNotFoundException ignored) {}
+        assertThrows(IOException.class, fileNotFound::read);
     }
 
     @Test
