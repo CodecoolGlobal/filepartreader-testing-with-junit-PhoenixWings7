@@ -15,7 +15,8 @@ class FileWordAnalyzerTest {
     @BeforeAll
     static void setUpTestEnv() throws IOException {
         filePartReader = new FilePartReader();
-        filePartReader.setup("/home/klaudia/IdeaProjects/filepartreader-testing-with-junit-PhoenixWings7/src/test/resources/wordsFile.txt",
+        String currentDir = System.getProperty("user.dir");
+        filePartReader.setup(currentDir + "/src/test/resources/wordsFile.txt",
                 1, 2);
         filePartReader.read();
         wordAnalyzer = new FileWordAnalyzer(filePartReader);
